@@ -157,7 +157,7 @@ def generate_html():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MGdBI - Python-Scripte</title>
+    <title>Mathematische Grundlagen der Bibliotheksinformatik &ndash; MdGBI</title>
     <style>
         * {{
             margin: 0;
