@@ -2,9 +2,7 @@
 """
 Script to generate website content for MGdBI Python scripts
 """
-import os
 import ast
-import re
 from pathlib import Path
 
 def extract_docstring(filepath):
@@ -201,34 +199,6 @@ def generate_html():
             opacity: 0.9;
         }}
 
-        .stats {{
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            text-align: center;
-        }}
-
-        .stat-item {{
-            margin: 0.5rem;
-        }}
-
-        .stat-number {{
-            font-size: 2rem;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
-        }}
-
-        .stat-label {{
-            font-size: 0.9rem;
-            color: #666;
-        }}
-
         .category {{
             background: white;
             margin-bottom: 2rem;
@@ -334,28 +304,6 @@ def generate_html():
             white-space: pre-wrap;
         }}
 
-        .search-container {{
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }}
-
-        .search-box {{
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e9ecef;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }}
-
-        .search-box:focus {{
-            outline: none;
-            border-color: #667eea;
-        }}
-
         .github-link {{
             text-align: center;
             margin-top: 2rem;
@@ -394,14 +342,6 @@ def generate_html():
             <p style="margin-top: 0.5rem; font-size: 0.9rem;">Autor: Sascha Szott</p>
         </header>
 
-        <div class="stats" id="stats">
-            <!-- Stats will be populated by JavaScript -->
-        </div>
-
-        <div class="search-container">
-            <input type="text" class="search-box" id="searchBox" placeholder="Nach Python-Scripten suchen...">
-        </div>
-
         <div id="categories">
             <!-- Categories will be populated by JavaScript -->
         </div>
@@ -425,35 +365,6 @@ def generate_html():
         const pythonScripts = [
 {js_scripts_string}
         ];
-
-        // Generate statistics
-        function generateStats() {{
-            const totalScripts = pythonScripts.length;
-            const totalLines = pythonScripts.reduce((sum, script) => sum + script.line_count, 0);
-            const categories = [...new Set(pythonScripts.map(script => script.category))];
-            const totalSize = pythonScripts.reduce((sum, script) => sum + script.file_size, 0);
-
-            const statsHtml = `
-                <div class="stat-item">
-                    <span class="stat-number">${{totalScripts}}</span>
-                    <span class="stat-label">Python-Scripte</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">${{categories.length}}</span>
-                    <span class="stat-label">Kategorien</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">${{totalLines}}</span>
-                    <span class="stat-label">Zeilen Code</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">${{Math.round(totalSize / 1024 * 10) / 10}}</span>
-                    <span class="stat-label">KB Gesamtgröße</span>
-                </div>
-            `;
-
-            document.getElementById('stats').innerHTML = statsHtml;
-        }}
 
         // Generate categories and scripts
         function generateCategories(scriptsToShow = pythonScripts) {{
@@ -516,20 +427,6 @@ def generate_html():
             }}
         }}
 
-        // Search functionality
-        function setupSearch() {{
-            const searchBox = document.getElementById('searchBox');
-            searchBox.addEventListener('input', (e) => {{
-                const query = e.target.value.toLowerCase();
-                const filteredScripts = pythonScripts.filter(script => 
-                    script.filename.toLowerCase().includes(query) ||
-                    script.description.toLowerCase().includes(query) ||
-                    script.category.toLowerCase().includes(query)
-                );
-                generateCategories(filteredScripts);
-            }});
-        }}
-
         // Setup modal
         function setupModal() {{
             const modal = document.getElementById('codeModal');
@@ -548,9 +445,7 @@ def generate_html():
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {{
-            generateStats();
             generateCategories();
-            setupSearch();
             setupModal();
         }});
     </script>
