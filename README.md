@@ -11,5 +11,6 @@ Das Repository enthält Python-Scripte zu folgenden Themen:
 - **ISBN-Validierung**: Validierung von ISBN-10 und ISBN-13
 - **Zahlentheorie**: ggT/kgV, Primfaktorzerlegung, Zahlensysteme
 - **Logik und Mengentheorie**: Wahrheitstabellen, Aussagenlogik
+- **Lineare Algebra**: Lösungsmengen von linearen Gleichungssystemen
 
 Autor: Sascha Szott
