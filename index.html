@@ -12,10 +12,10 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f5f5f5;
+            background-color: #0F172A;
         }
 
         .container {
@@ -25,8 +25,8 @@
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #6366F1 0%, #280cc8 100%);
+            color: rgb(218, 218, 218);
             padding: 2rem 0;
             margin-bottom: 2rem;
             border-radius: 10px;
@@ -39,10 +39,23 @@
             text-align: center;
         }
 
-        header p {
-            font-size: 1.1rem;
+        header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
             text-align: center;
-            opacity: 0.9;
+        }
+
+        header h3 {
+            font-size: 1.0rem;
+            font-weight: lighter;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        header p {
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .category {
@@ -54,7 +67,7 @@
         }
 
         .category-header {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #969696 0%, #323232 100%);
             color: white;
             padding: 1rem 1.5rem;
             font-size: 1.3rem;
@@ -169,11 +182,11 @@
             header h1 {
                 font-size: 2rem;
             }
-            
+
             .scripts-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .stats {
                 flex-direction: column;
             }
@@ -184,8 +197,9 @@
     <div class="container">
         <header>
             <h1>MGdBI – Python-Scripte</h1>
-            <p>Mathematische Grundlagen der Bibliotheksinformatik</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Autor: Sascha Szott</p>
+            <h2>Mathematische Grundlagen der Bibliotheksinformatik</h2>
+            <h3>Brückenkurs an der Technischen Hochschule Wildau im Masterstudiengang Bibliotheksinformatik</h4>
+            <p>Dozent: Sascha Szott</p>
         </header>
 
         <div id="categories">
@@ -211,136 +225,143 @@
         const pythonScripts = [
             {
                 filename: '2dim-system-of-2-linear-equations.py',
-                description: 'x-Werte Fall 1: keine Lösung (parallele Geraden)',
-                category: 'Sonstige',
-                line_count: 43,
-                file_size: 1043
+                description: 'Visualisierung des Lösungsraums von linearen Gleichungssystemen mit 2 Gleichungen und 2 Unbekannten\n1. Keine Lösung (zwei parallele Geraden)\n2. Genau eine Lösung (Schnittpunkt von zwei Geraden)\n3. Unendlich viele Lösungen (identische Geraden)',
+                category: 'Lineare Algebra',
+                line_count: 50,
+                file_size: 1336
             },
             {
                 filename: '3dim-system-of-3-linear-equations.py',
-                description: 'Definitionsbereich Fall 1: keine Lösung (3 parallele Ebenen)',
-                category: 'Sonstige',
-                line_count: 88,
-                file_size: 2392
+                description: 'Visualisierung des Lösungsraums von linearen Gleichungssystemen mit 3 Gleichungen und 3 Unbekannten\n1. Keine Lösung (drei parallele Ebenen)\n2. Genau eine Lösung (Schnittpunkt von drei Ebenen)\n3. Unendlich viele Lösungen (Schnitt entlang einer Geraden oder drei identische Ebenen)',
+                category: 'Lineare Algebra',
+                line_count: 95,
+                file_size: 2685
+            },
+            {
+                filename: 'als-recommender.py',
+                description: 'Recommender-System auf Basis von Alternating Least Squares (ALS)\n\nHierbei wird eine lückenhafte Empfehlungsmatrix R mit den\nbeobachteten Bewertungen in die Produktform zweier\nFaktormatrizen U und V zerlegt, so dass R ≈ U Vᵀ\nDie Matrizen U und V werden iterativ durch Lösen\nkleinerer linearer Gleichungssysteme aktualisiert.',
+                category: 'Lineare Algebra',
+                line_count: 84,
+                file_size: 3025
             },
             {
                 filename: 'binomial-coefficient.py',
-                description: 'Function binomial_coefficient: Calculates the binomial coefficient n choose k (nCk)\nwhich is the number of ways to choose k elements from a set of n elements.',
-                category: 'Mathematische Berechnungen',
-                line_count: 19,
-                file_size: 506
+                description: 'Berechnung des Binomialkoeffizienten \"n über k\" (n choose k (nCk)).\nDer Binomialkoeffizient nCk gibt die Anzahl der Möglichkeiten an,\nk Elemente aus einer Menge von n Elementen auszuwählen.',
+                category: 'Kombinatorik',
+                line_count: 25,
+                file_size: 708
             },
             {
                 filename: 'isbn-validator.py',
                 description: 'Validierung von ISBN-10 Nummern',
-                category: 'ISBN-Validierung',
-                line_count: 16,
-                file_size: 310
+                category: 'Gewichtete Quersummen, Modulo und ISBN-Validierung',
+                line_count: 20,
+                file_size: 351
             },
             {
                 filename: 'isbn13-validator.py',
-                description: 'Stellennummern i beginnen bei 0 dreifache Gewichtung von ungeraden Stellen',
-                category: 'ISBN-Validierung',
-                line_count: 15,
-                file_size: 337
+                description: 'Validierung von ISBN-13 Nummern',
+                category: 'Gewichtete Quersummen, Modulo und ISBN-Validierung',
+                line_count: 19,
+                file_size: 378
             },
             {
                 filename: 'logic2sets.py',
-                description: 'Grundmenge (Universum) Teilmengen von X als Aussagen Logische Interpretation: True/False',
-                category: 'Mathematische Berechnungen',
-                line_count: 31,
-                file_size: 819
+                description: 'Veranschaulichung der Verbindung zwischen Aussagenlogik und Mengenlehre.\nÜbersetzung einer aussagenlogischen Formel in eine mengentheoretische Formel.',
+                category: 'Aussagenlogik und naive Mengenlehre',
+                line_count: 36,
+                file_size: 980
             },
             {
                 filename: 'number-theory.py',
-                description: 'greatest common divisor least common multiple',
+                description: 'Berechnung des größten gemeinsamen Teilers (ggT) und des kleinsten gemeinsamen Vielfachen (kgV) zweier Zahlen.',
                 category: 'Zahlentheorie',
+                line_count: 14,
+                file_size: 303
+            },
+            {
+                filename: 'number_value.py',
+                description: 'Umwandlung einer Binärzahl in eine Dezimalzahl.',
+                category: 'Zahlentheorie',
+                line_count: 13,
+                file_size: 277
+            },
+            {
+                filename: 'pascals-triangle.py',
+                description: 'Erzeugung und Ausgabe des Pascalschen Dreiecks.\nIm Pascalschen Dreieck entspricht der Eintrag in der n-ten Zeile und k-ten Spalte\ndem Binomialkoeffizienten \"n über k\" (nCk).',
+                category: 'Kombinatorik',
+                line_count: 21,
+                file_size: 606
+            },
+            {
+                filename: 'prime-factorization.py',
+                description: 'Primfaktorzerlegung von großen Zahlen mit sympy.',
+                category: 'Zahlentheorie',
+                line_count: 13,
+                file_size: 262
+            },
+            {
+                filename: 'prod.py',
+                description: 'Berechnung des Produkts der Zahlen von 1 bis n = 25 (Fakultät, n!).',
+                category: 'Summen und Produkte',
+                line_count: 9,
+                file_size: 226
+            },
+            {
+                filename: 'simplify_logic_formula.py',
+                description: 'Vereinfachung und Analyse von logischen Aussagen mit sympy.',
+                category: 'Aussagenlogik und naive Mengenlehre',
+                line_count: 26,
+                file_size: 937
+            },
+            {
+                filename: 'sum-even-numbers.py',
+                description: 'Berechnung der Summe der ersten n = 100 geraden Zahlen.',
+                category: 'Summen und Produkte',
+                line_count: 9,
+                file_size: 175
+            },
+            {
+                filename: 'sum-odd-numbers.py',
+                description: 'Berechnung der Summe der ersten n = 100 ungeraden Zahlen.',
+                category: 'Summen und Produkte',
                 line_count: 9,
                 file_size: 180
             },
             {
-                filename: 'number_value.py',
-                description: 'Umrechnung von Binärzahlen ins Dezimalsystem',
-                category: 'Zahlentheorie',
+                filename: 'sum-powers-of-2.py',
+                description: 'Berechnung der Summe der ersten n + 1 = 10 Zweierpotenzen, beginnend bei 2^0.',
+                category: 'Summen und Produkte',
                 line_count: 9,
-                file_size: 219
+                file_size: 199
             },
             {
-                filename: 'pascals-triangle.py',
-                description: 'Erzeugung des Pascalschen Dreiecks',
-                category: 'Mathematische Berechnungen',
-                line_count: 15,
-                file_size: 422
-            },
-            {
-                filename: 'prime-factorization.py',
-                description: 'Primfaktorzerlegung von Zahlen',
-                category: 'Zahlentheorie',
+                filename: 'sum-squares.py',
+                description: 'Berechnung der Summe der Quadrate der ersten n = 6 natürlichen Zahlen.',
+                category: 'Summen und Produkte',
                 line_count: 9,
                 file_size: 203
             },
             {
-                filename: 'prod.py',
-                description: 'Berechnung des Produkts von natürlichen Zahlen (Fakultät)',
-                category: 'Mathematische Berechnungen',
-                line_count: 5,
-                file_size: 148
-            },
-            {
-                filename: 'simplify_logic_formula.py',
-                description: 'Aussage 1: (¬A ∧ ¬B ∧ ¬C) ∨ (¬A ∧ ¬B ∧ C) ∨ (A ∧ B ∧ ¬C) Aussage 2: (A ∨ ¬B ∨ ¬C) ∧ (¬A ∨ B ∨ C) expr = And(Or(A, Not(B), Not(C)), Or(Not(A), B, C))',
-                category: 'Logik und Mengentheorie',
-                line_count: 22,
-                file_size: 868
-            },
-            {
-                filename: 'sum-even-numbers.py',
-                description: 'Berechnung der Summe von geraden Zahlen',
-                category: 'Mathematische Berechnungen',
-                line_count: 5,
-                file_size: 110
-            },
-            {
-                filename: 'sum-odd-numbers.py',
-                description: 'Berechnung der Summe von ungeraden Zahlen',
-                category: 'Mathematische Berechnungen',
-                line_count: 5,
-                file_size: 113
-            },
-            {
-                filename: 'sum-powers-of-2.py',
-                description: 'Berechnung der Summe von Zweierpotenzen',
-                category: 'Mathematische Berechnungen',
-                line_count: 5,
-                file_size: 112
-            },
-            {
-                filename: 'sum-squares.py',
-                description: 'Berechnung der Summe von Quadratzahlen',
-                category: 'Mathematische Berechnungen',
-                line_count: 5,
-                file_size: 122
-            },
-            {
                 filename: 'sum.py',
-                description: 'Berechnung der Summe von natürlichen Zahlen',
-                category: 'Mathematische Berechnungen',
-                line_count: 5,
-                file_size: 101
+                description: 'Berechnung der Summe der ersten n = 5 natürlichen Zahlen.',
+                category: 'Summen und Produkte',
+                line_count: 9,
+                file_size: 169
             },
             {
                 filename: 'truth-table.py',
-                description: 'Aussage 1: (¬A ∧ ¬B ∧ ¬C) ∨ (¬A ∧ ¬B ∧ C) ∨ (A ∧ B ∧ ¬C) Aussage 2: (A ∨ ¬B ∨ ¬C) ∧ (¬A ∨ B ∨ C)',
-                category: 'Logik und Mengentheorie',
-                line_count: 19,
-                file_size: 657
+                description: 'Berechnung und Anzeige der Wahrheitstabellen für aussagenlogische Formeln mit sympy.',
+                category: 'Aussagenlogik und naive Mengenlehre',
+                line_count: 23,
+                file_size: 752
             }
         ];
 
         // Generate categories and scripts
         function generateCategories(scriptsToShow = pythonScripts) {
             const categories = {};
-            
+
             scriptsToShow.forEach(script => {
                 if (!categories[script.category]) {
                     categories[script.category] = [];
