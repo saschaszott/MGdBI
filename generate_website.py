@@ -10,18 +10,18 @@ def extract_docstring(filepath):
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             content = f.read()
-        
+
         tree = ast.parse(content)
         if ast.get_docstring(tree):
             return ast.get_docstring(tree)
-        
+
         # If no module docstring, look for first function docstring
         for node in ast.walk(tree):
             if isinstance(node, ast.FunctionDef):
                 docstring = ast.get_docstring(node)
                 if docstring:
                     return f"Function {node.name}: {docstring}"
-        
+
         return None
     except Exception:
         return None
@@ -31,7 +31,7 @@ def extract_description_from_comments(filepath):
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             lines = f.readlines()
-        
+
         description_lines = []
         for line in lines[:10]:  # Check first 10 lines
             line = line.strip()
@@ -40,7 +40,7 @@ def extract_description_from_comments(filepath):
                 comment = line.lstrip('#').strip()
                 if comment and not comment.startswith('...'):
                     description_lines.append(comment)
-        
+
         return ' '.join(description_lines) if description_lines else None
     except Exception:
         return None
@@ -48,7 +48,7 @@ def extract_description_from_comments(filepath):
 def infer_description_from_filename(filename):
     """Infer description from filename."""
     name_without_ext = filename.replace('.py', '').replace('-', ' ').replace('_', ' ')
-    
+
     descriptions = {
         'sum': 'Berechnung der Summe von natürlichen Zahlen',
         'sum squares': 'Berechnung der Summe von Quadratzahlen',
@@ -65,22 +65,29 @@ def infer_description_from_filename(filename):
         'isbn13 validator': 'Validierung von ISBN-13 Nummern',
         'truth table': 'Erzeugung von Wahrheitstabellen für logische Ausdrücke',
         'simplify logic formula': 'Vereinfachung logischer Formeln',
-        'logic2sets': 'Übersetzung zwischen Aussagenlogik und Mengenoperationen'
+        'logic2sets': 'Übersetzung zwischen Aussagenlogik und Mengenoperationen',
+        '2dim system of 2 linear equations': 'Lineare Gleichungssysteme mit 2 Gleichungen und 2 Unbekannten',
+        '3dim system of 3 linear equations': 'Lineare Gleichungssysteme mit 3 Gleichungen und 3 Unbekannten',
+        'als recommender': 'Recommender-System basierend auf Alternating Least Squares (ALS)',
     }
-    
+
     return descriptions.get(name_without_ext, f'Python-Script: {name_without_ext}')
 
 def categorize_script(filename, description):
     """Categorize script based on filename and description."""
     filename_lower = filename.lower()
     desc_lower = description.lower() if description else ''
-    
-    if any(word in filename_lower or word in desc_lower for word in ['sum', 'prod', 'binomial', 'pascal']):
-        return 'Mathematische Berechnungen'
+
+    if any(word in filename_lower or word in desc_lower for word in ['linear', 'equation', 'recommender']):
+        return 'Lineare Algebra'
+    elif any(word in filename_lower or word in desc_lower for word in ['binomial', 'pascals']):
+        return 'Kombinatorik'
+    elif any(word in filename_lower or word in desc_lower for word in ['sum', 'prod', 'binomial', 'pascal']):
+        return 'Summen und Produkte'
     elif any(word in filename_lower or word in desc_lower for word in ['logic', 'truth', 'sets']):
-        return 'Logik und Mengentheorie'
+        return 'Aussagenlogik und naive Mengenlehre'
     elif any(word in filename_lower or word in desc_lower for word in ['isbn']):
-        return 'ISBN-Validierung'
+        return 'Gewichtete Quersummen, Modulo und ISBN-Validierung'
     elif any(word in filename_lower or word in desc_lower for word in ['prime', 'number', 'gcd', 'lcm']):
         return 'Zahlentheorie'
     else:
@@ -90,27 +97,27 @@ def get_python_files():
     """Get all Python files in the current directory."""
     current_dir = Path('.')
     python_files = []
-    
+
     for file in current_dir.glob('*.py'):
         if file.name != 'generate_website.py':  # Exclude this script
             python_files.append(file.name)
-    
+
     return sorted(python_files)
 
 def generate_script_info():
     """Generate information about all Python scripts."""
     scripts = []
-    
+
     for filename in get_python_files():
         filepath = Path(filename)
-        
+
         # Try to extract description
         description = (
-            extract_docstring(filepath) or 
-            extract_description_from_comments(filepath) or 
+            extract_docstring(filepath) or
+            extract_description_from_comments(filepath) or
             infer_description_from_filename(filename)
         )
-        
+
         # Get file size and line count
         try:
             with open(filepath, 'r', encoding='utf-8') as f:
@@ -120,9 +127,9 @@ def generate_script_info():
         except Exception:
             line_count = 0
             file_size = 0
-        
+
         category = categorize_script(filename, description)
-        
+
         scripts.append({
             'filename': filename,
             'description': description,
@@ -130,13 +137,13 @@ def generate_script_info():
             'line_count': line_count,
             'file_size': file_size
         })
-    
+
     return scripts
 
 def generate_html():
     """Generate the complete HTML website."""
     scripts = generate_script_info()
-    
+
     # Convert to JavaScript format
     js_scripts = []
     for script in scripts:
@@ -149,9 +156,9 @@ def generate_html():
                 line_count: {script['line_count']},
                 file_size: {script['file_size']}
             }}""")
-    
+
     js_scripts_string = ',\n'.join(js_scripts)
-    
+
     html_template = f'''<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -166,10 +173,10 @@ def generate_html():
         }}
 
         body {{
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f5f5f5;
+            background-color: #0F172A;
         }}
 
         .container {{
@@ -179,8 +186,8 @@ def generate_html():
         }}
 
         header {{
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #6366F1 0%, #280cc8 100%);
+            color: rgb(218, 218, 218);
             padding: 2rem 0;
             margin-bottom: 2rem;
             border-radius: 10px;
@@ -193,10 +200,23 @@ def generate_html():
             text-align: center;
         }}
 
-        header p {{
-            font-size: 1.1rem;
+        header h2 {{
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
             text-align: center;
-            opacity: 0.9;
+        }}
+
+        header h3 {{
+            font-size: 1.0rem;
+            font-weight: lighter;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }}
+
+        header p {{
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
         }}
 
         .category {{
@@ -208,7 +228,7 @@ def generate_html():
         }}
 
         .category-header {{
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(135deg, #969696 0%, #323232 100%);
             color: white;
             padding: 1rem 1.5rem;
             font-size: 1.3rem;
@@ -323,11 +343,11 @@ def generate_html():
             header h1 {{
                 font-size: 2rem;
             }}
-            
+
             .scripts-grid {{
                 grid-template-columns: 1fr;
             }}
-            
+
             .stats {{
                 flex-direction: column;
             }}
@@ -338,8 +358,9 @@ def generate_html():
     <div class="container">
         <header>
             <h1>MGdBI – Python-Scripte</h1>
-            <p>Mathematische Grundlagen der Bibliotheksinformatik</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Autor: Sascha Szott</p>
+            <h2>Mathematische Grundlagen der Bibliotheksinformatik</h2>
+            <h3>Brückenkurs an der Technischen Hochschule Wildau im Masterstudiengang Bibliotheksinformatik</h4>
+            <p>Dozent: Sascha Szott</p>
         </header>
 
         <div id="categories">
@@ -369,7 +390,7 @@ def generate_html():
         // Generate categories and scripts
         function generateCategories(scriptsToShow = pythonScripts) {{
             const categories = {{}};
-            
+
             scriptsToShow.forEach(script => {{
                 if (!categories[script.category]) {{
                     categories[script.category] = [];
@@ -451,12 +472,12 @@ def generate_html():
     </script>
 </body>
 </html>'''
-    
+
     return html_template
 
 if __name__ == '__main__':
     scripts = generate_script_info()
-    
+
     # Group by category
     categories = {}
     for script in scripts:
@@ -464,17 +485,17 @@ if __name__ == '__main__':
         if cat not in categories:
             categories[cat] = []
         categories[cat].append(script)
-    
+
     # Print summary
     print(f"Found {len(scripts)} Python scripts in {len(categories)} categories:")
     for cat, cat_scripts in categories.items():
         print(f"  {cat}: {len(cat_scripts)} scripts")
-    
+
     # Generate HTML
     html_content = generate_html()
-    
+
     # Write to index.html
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html_content)
-    
+
     print("Generated index.html successfully!")
