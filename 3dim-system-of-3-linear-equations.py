@@ -1,3 +1,10 @@
+"""
+Visualisierung des Lösungsraums von linearen Gleichungssystemen mit 3 Gleichungen und 3 Unbekannten
+1. Keine Lösung (drei parallele Ebenen)
+2. Genau eine Lösung (Schnittpunkt von drei Ebenen)
+3. Unendlich viele Lösungen (Schnitt entlang einer Geraden oder drei identische Ebenen)
+"""
+
 import matplotlib.pyplot as plt
 from matplotlib.colors import to_rgb
 import numpy as np

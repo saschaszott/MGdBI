@@ -1,3 +1,7 @@
+"""
+Vereinfachung und Analyse von logischen Aussagen mit sympy.
+"""
+
 from sympy import symbols
 from sympy.logic.boolalg import Or, And, Not, simplify_logic
 from sympy.logic.boolalg import truth_table

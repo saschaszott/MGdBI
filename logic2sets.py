@@ -1,3 +1,8 @@
+"""
+Veranschaulichung der Verbindung zwischen Aussagenlogik und Mengenlehre.
+Übersetzung einer aussagenlogischen Formel in eine mengentheoretische Formel.
+"""
+
 from itertools import product
 
 # Grundmenge (Universum)

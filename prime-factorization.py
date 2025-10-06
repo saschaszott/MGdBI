@@ -1,3 +1,7 @@
+"""
+Primfaktorzerlegung von großen Zahlen mit sympy.
+"""
+
 from sympy import factorint
 print(factorint(24))
 print(factorint(36))

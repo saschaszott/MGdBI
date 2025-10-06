@@ -1,3 +1,9 @@
+"""
+Berechnung des Binomialkoeffizienten "n über k" (n choose k (nCk)).
+Der Binomialkoeffizient nCk gibt die Anzahl der Möglichkeiten an,
+k Elemente aus einer Menge von n Elementen auszuwählen.
+"""
+
 def binomial_coefficient(n, k):
     """
     Calculates the binomial coefficient n choose k (nCk)

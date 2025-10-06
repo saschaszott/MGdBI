@@ -1,3 +1,10 @@
+"""
+Visualisierung des Lösungsraums von linearen Gleichungssystemen mit 2 Gleichungen und 2 Unbekannten
+1. Keine Lösung (zwei parallele Geraden)
+2. Genau eine Lösung (Schnittpunkt von zwei Geraden)
+3. Unendlich viele Lösungen (identische Geraden)
+"""
+
 import matplotlib.pyplot as plt
 import numpy as np
 

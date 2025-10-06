@@ -1,3 +1,7 @@
+"""
+Berechnung der Summe der ersten n + 1 = 10 Zweierpotenzen, beginnend bei 2^0.
+"""
+
 n = 9
 sum = 0
 for i in range(0, n + 1):

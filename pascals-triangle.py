@@ -1,3 +1,9 @@
+"""
+Erzeugung und Ausgabe des Pascalschen Dreiecks.
+Im Pascalschen Dreieck entspricht der Eintrag in der n-ten Zeile und k-ten Spalte
+dem Binomialkoeffizienten "n über k" (nCk).
+"""
+
 def pascals_triangle(n):
     triangle = []
     for i in range(n):

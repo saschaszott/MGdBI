@@ -1,3 +1,7 @@
+"""
+Validierung von ISBN-10 Nummern
+"""
+
 isbn10 = '3960091877' # Git – kurz & gut 
 sum = 0
 position = 1

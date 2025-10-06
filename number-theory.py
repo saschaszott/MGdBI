@@ -1,4 +1,9 @@
+"""
+Berechnung des größten gemeinsamen Teilers (ggT) und des kleinsten gemeinsamen Vielfachen (kgV) zweier Zahlen.
+"""
+
 import math
+
 a = 4
 b = 10
 # greatest common divisor

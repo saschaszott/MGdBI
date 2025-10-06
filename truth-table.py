@@ -1,3 +1,7 @@
+"""
+Berechnung und Anzeige der Wahrheitstabellen für aussagenlogische Formeln mit sympy.
+"""
+
 from sympy import symbols
 from sympy.logic.boolalg import Or, And, Not
 from sympy.logic.boolalg import truth_table

@@ -1,3 +1,7 @@
+"""
+Validierung von ISBN-13 Nummern
+"""
+
 isbn13 = '9783864903847'
 sum = 0
 for i, digit in enumerate(isbn13):

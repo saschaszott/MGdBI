@@ -1,3 +1,7 @@
+"""
+Umwandlung einer Binärzahl in eine Dezimalzahl.
+"""
+
 base = 2
 number = '11101'
 value = 0

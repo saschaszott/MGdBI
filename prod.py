@@ -1,3 +1,7 @@
+"""
+Berechnung des Produkts der Zahlen von 1 bis n = 25 (Fakultät, n!).
+"""
+
 n = 25
 prod = 1 # neutrales Element der Multiplikation
 for i in range(1, n + 1):

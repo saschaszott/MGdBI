@@ -1,3 +1,7 @@
+"""
+Berechnung der Summe der ersten n = 100 geraden Zahlen.
+"""
+
 n = 100
 sum = 0
 for i in range(1, n + 1):
