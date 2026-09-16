@@ -84,7 +84,7 @@ def categorize_script(filename, description):
         return 'Kombinatorik'
     elif any(word in filename_lower or word in desc_lower for word in ['sum', 'prod', 'binomial', 'pascal']):
         return 'Summen und Produkte'
-    elif any(word in filename_lower or word in desc_lower for word in ['logic', 'truth', 'sets']):
+    elif any(word in filename_lower or word in desc_lower for word in ['logic', 'truth', 'sets', '3sat']):
         return 'Aussagenlogik und naive Mengenlehre'
     elif any(word in filename_lower or word in desc_lower for word in ['isbn']):
         return 'Gewichtete Quersummen, Modulo und ISBN-Validierung'
