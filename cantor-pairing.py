@@ -9,20 +9,17 @@ eindeutig sind und die Umkehrfunktion korrekt zurückrechnet.
 """
 
 from __future__ import annotations
+from math import floor
 
 def pairing(i: int, j: int) -> int:
     """Cantorsche Paarungsfunktion: bildet (i, j) bijektiv auf n ab."""
     return (i + j) * (i + j + 1) // 2 + j
 
 def unpairing(n: int) -> tuple[int, int]:
-    """Kehrfunktion: aus n werden (i, j) rekonstruiert."""
+    """Kehrfunktion: aus Eintrag n werden (i, j) = (Spalte, Zeile) rekonstruiert."""
     # k ist die Diagonale (i + j), auf der n liegt.
-    k = int(((8 * n + 1) ** 0.5 - 1) // 2)
-    # Korrektur für mögliche Rundungsfehler bei der Wurzel.
-    while k * (k + 1) // 2 > n:
-        k -= 1
-    while (k + 1) * (k + 2) // 2 <= n:
-        k += 1
+    # k (k + 1) / 2 = 1/2k^2 + 1/2k = n nach k auflösen: k^2 + k - 2n = 0 <=> k = -1/2 +/- sqrt(1/4 + 2n) = -1/2 + sqrt(1 + 8n)/2
+    k = int(floor(((8 * n + 1) ** 0.5 - 1) // 2))
     j = n - k * (k + 1) // 2
     i = k - j
     return i, j
