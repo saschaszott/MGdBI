@@ -16,11 +16,11 @@ def pairing(i: int, j: int) -> int:
     return (i + j) * (i + j + 1) // 2 + j
 
 def unpairing(n: int) -> tuple[int, int]:
-    """Kehrfunktion: aus Eintrag n werden (i, j) = (Spalte, Zeile) rekonstruiert."""
+    """Umkehrfunktion: aus Eintrag n werden (i, j) = (Spalte, Zeile) rekonstruiert."""
     # k ist die Diagonale (i + j), auf der n liegt.
     # k (k + 1) / 2 = 1/2k^2 + 1/2k = n nach k auflösen: k^2 + k - 2n = 0 <=> k = -1/2 +/- sqrt(1/4 + 2n) = -1/2 + sqrt(1 + 8n)/2
-    k = int(floor(((8 * n + 1) ** 0.5 - 1) // 2))
-    j = n - k * (k + 1) // 2
+    k = floor(((8 * n + 1) ** 0.5 - 1) / 2)
+    j = n - k * (k + 1) / 2
     i = k - j
     return i, j
 
