@@ -53,10 +53,9 @@ def verify(size: int = 10) -> None:
             if unpairing(n) != (i, j):
                 raise AssertionError(f"Umkehrfunktion falsch bei n={n}")
 
-    print(f"\n{size * size} Paare geprüft: alle Werte eindeutig, "
-          f"Umkehrfunktion stimmt überein.")
+    print(f"\n{size * size} Paare geprüft: alle Werte eindeutig, Umkehrfunktion stimmt überein.")
 
 if __name__ == "__main__":
-    print("Cantorsche Paarungsfunktion pi(i, j) = (i+j)(i+j+1)/2 + j\n")
+    print("Cantorsche Paarungsfunktion: pi(i, j) = (i+j)(i+j+1)/2 + j\n")
     print_table(25)
     verify(25)
