@@ -69,6 +69,8 @@ def infer_description_from_filename(filename):
         '2dim system of 2 linear equations': 'Lineare Gleichungssysteme mit 2 Gleichungen und 2 Unbekannten',
         '3dim system of 3 linear equations': 'Lineare Gleichungssysteme mit 3 Gleichungen und 3 Unbekannten',
         'als recommender': 'Recommender-System basierend auf Alternating Least Squares (ALS)',
+        '3sat': 'Lösung des 3-SAT Problems in der Aussagenlogik',
+        'cantor pairing': 'Cantorsche Paarungsfunktion und deren Umkehrfunktion',
     }
 
     return descriptions.get(name_without_ext, f'Python-Script: {name_without_ext}')
@@ -84,7 +86,7 @@ def categorize_script(filename, description):
         return 'Kombinatorik'
     elif any(word in filename_lower or word in desc_lower for word in ['sum', 'prod', 'binomial', 'pascal']):
         return 'Summen und Produkte'
-    elif any(word in filename_lower or word in desc_lower for word in ['logic', 'truth', 'sets', '3sat']):
+    elif any(word in filename_lower or word in desc_lower for word in ['logic', 'truth', 'sets', '3sat', 'cantor']):
         return 'Aussagenlogik und naive Mengenlehre'
     elif any(word in filename_lower or word in desc_lower for word in ['isbn']):
         return 'Gewichtete Quersummen, Modulo und ISBN-Validierung'
