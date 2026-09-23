@@ -9,8 +9,8 @@ Das Repository enthält Python-Scripte zu folgenden Themen:
 
 - **Mathematische Berechnungen**: Summen, Binomialkoeffizienten, Pascalsches Dreieck
 - **ISBN-Validierung**: Validierung von ISBN-10 und ISBN-13
-- **Zahlentheorie**: ggT/kgV, Primfaktorzerlegung, Zahlensysteme
-- **Logik und Mengentheorie**: Wahrheitstabellen, Aussagenlogik
-- **Lineare Algebra**: Lösungsmengen von linearen Gleichungssystemen
+- **Zahlentheorie**: ggT/kgV, Primfaktorzerlegung, Zahlsysteme
+- **Logik und Mengentheorie**: Wahrheitstabellen, Aussagenlogik, 3-SAT, Cantorsche Paarungsfunktion
+- **Lineare Algebra**: Lösungsmengen von linearen Gleichungssystemen, ALS-Recommender
 
 Autor: Sascha Szott
